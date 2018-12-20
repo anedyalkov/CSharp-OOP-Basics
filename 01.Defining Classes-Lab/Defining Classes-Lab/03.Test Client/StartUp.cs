@@ -6,6 +6,8 @@
 
     public class StartUp
     {
+        private const string UnexistingAccount = "Account does not exist";
+
         public static void Main()
         {
  
@@ -25,7 +27,7 @@
                     var amount = decimal.Parse(tokens[2]);
                     if (!accounts.ContainsKey(id))
                     {
-                        Console.WriteLine("Account does not exist");
+                        Console.WriteLine(UnexistingAccount);
                     }
                     else
                     {
@@ -39,7 +41,7 @@
 
                     if (!accounts.ContainsKey(id))
                     {
-                        Console.WriteLine("Account does not exist");
+                        Console.WriteLine(UnexistingAccount);
                     }
                     else
                     {
@@ -51,7 +53,7 @@
                     var id = int.Parse(tokens[1]);
                     if (!accounts.ContainsKey(id))
                     {
-                        Console.WriteLine("Account does not exist");
+                        Console.WriteLine(UnexistingAccount);
                     }
                     else
                     {
@@ -72,7 +74,7 @@
             }
             else
             {
-                Console.WriteLine("Account already exists");
+                Console.WriteLine(UnexistingAccount);
             }
         }
     }
