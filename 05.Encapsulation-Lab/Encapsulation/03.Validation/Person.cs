@@ -4,9 +4,11 @@
 
     public class Person
     {
-        const decimal MIN_SALARY = 460;
-        const int MIN_LENGTH = 3;
-        const string errorMessage = "{0} cannot contain fewer than {1} symbols!";
+        const decimal MinSalary = 460;
+        const int MinLength = 3;
+        const string NameErrorMessage = "{0} cannot contain fewer than {1} symbols!";
+        const string AgeErrorMessage = "Age cannot be zero or a negative integer!";
+        const string InvalidSalaryMessage = "Salary cannot be less than {0} leva!";
 
         private string firstName;
         private string lastName;
@@ -29,9 +31,9 @@
             get { return firstName; }
             set
             {
-                if (value.Length < MIN_LENGTH)
+                if (value.Length < MinLength)
                 {
-                    throw new ArgumentException(string.Format(errorMessage,value,MIN_LENGTH));
+                    throw new ArgumentException(string.Format(NameErrorMessage, value,MinLength));
                 }
 
                 firstName = value;
@@ -57,7 +59,7 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException($"Age cannot be zero or a negative integer!");
+                    throw new ArgumentException(AgeErrorMessage);
                 }
                 age = value;
             }
@@ -70,7 +72,7 @@
             {
                 if (value < 460)
                 {
-                    throw new ArgumentException($"Salary cannot be less than {MIN_SALARY} leva!");
+                    throw new ArgumentException(string.Format(InvalidSalaryMessage,MinSalary));
                 }
                 salary = value;
             }
@@ -79,7 +81,7 @@
         {
             if (valueAsString?.Length < 3)
             {
-                throw new ArgumentException(string.Format(errorMessage,valueAsString,MIN_LENGTH));
+                throw new ArgumentException(string.Format(NameErrorMessage, valueAsString,MinLength));
             }
             return true;
         }

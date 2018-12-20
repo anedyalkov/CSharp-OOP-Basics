@@ -4,8 +4,11 @@
 
     public class Person
     {
-        const decimal MIN_SALARY = 460;
-        const int MIN_LENGTH = 3;
+        const decimal MinSalary = 460;
+        const int MinLength = 3;
+        const string InvalidNameMessage = "{0} cannot contain fewer than {1} symbols!";
+        const string InvalidAgeMessage = "Age cannot be zero or a negative integer!";
+        const string InvalidSalaryMessage = "Salary cannot be less than {0} leva!";
 
         private string firstName;
         private string lastName;
@@ -28,7 +31,7 @@
             get { return firstName; }
             set
             {
-                if (IsNameValid(value,"First name"))
+                if (IsNameValid(value, "First name"))
                 {
                     firstName = value;
                 }              
@@ -54,7 +57,7 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException($"Age cannot be zero or a negative integer!");
+                    throw new ArgumentException(InvalidAgeMessage);
                 }
                 age = value;
             }
@@ -67,7 +70,7 @@
             {
                 if (value < 460)
                 {
-                    throw new ArgumentException($"Salary cannot be less than {MIN_SALARY} leva!");
+                    throw new ArgumentException(string.Format(InvalidSalaryMessage,MinSalary));
                 }
                 salary = value;
             }
@@ -76,25 +79,9 @@
         {
             if (valueAsString?.Length < 3)
             {
-                throw new ArgumentException($"{name} cannot contain fewer than {MIN_LENGTH} symbols!");
+                throw new ArgumentException(string.Format(InvalidNameMessage, name, MinLength));
             }
             return true;
         }
-        //public void IncreaseSalary(decimal percentage)
-        //{
-        //    if (Age > 30)
-        //    {
-        //        Salary += Salary * percentage / 100;
-        //    }
-        //    else
-        //    {
-        //        Salary += Salary * percentage / 200;
-        //    }
-        //}
-
-        //public override string ToString()
-        //{
-        //    return $"{FirstName} {LastName} receives {Salary:F2} leva.";
-        //}
     }
 }
