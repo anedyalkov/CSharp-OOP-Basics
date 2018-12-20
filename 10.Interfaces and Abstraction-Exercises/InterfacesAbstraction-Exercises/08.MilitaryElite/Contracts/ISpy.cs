@@ -1,0 +1,7 @@
+﻿namespace _08.MilitaryElite.Contracts
+{
+    public interface ISpy : ISoldier
+    {
+        int CodeNumber { get; }
+    }
+}
