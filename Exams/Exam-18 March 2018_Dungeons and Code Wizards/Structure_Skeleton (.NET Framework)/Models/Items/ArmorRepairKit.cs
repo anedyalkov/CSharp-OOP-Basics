@@ -9,9 +9,9 @@ namespace DungeonsAndCodeWizards.Models.Items
 {
     public class ArmorRepairKit : Item
     {
-        private const int DefaultWeight = 10;
+        //private const int DefaultWeight = 10;
 
-        public  ArmorRepairKit() : base(DefaultWeight)
+        public  ArmorRepairKit() : base(weight: 10)
         {
         }
 

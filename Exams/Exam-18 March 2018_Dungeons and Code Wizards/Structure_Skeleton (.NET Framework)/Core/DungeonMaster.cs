@@ -50,14 +50,14 @@ namespace DungeonsAndCodeWizards.Core
         public string PickUpItem(string[] args)
         {
             var characterName = args[0];
-           
+
             var character = characterParty.FirstOrDefault(ch => ch.Name == characterName);
 
             if (character == null)
             {
                 throw new ArgumentException($"Character {characterName} not found!");
             }
-           
+
             if (itemPool.Count == 0)
             {
                 throw new InvalidOperationException($"No items left in pool!");
@@ -67,7 +67,6 @@ namespace DungeonsAndCodeWizards.Core
 
             itemPool.Remove(item);
             character.ReceiveItem(item);
-           
 
             return $"{character.Name} picked up {item.GetType().Name}!";
         }
@@ -114,7 +113,6 @@ namespace DungeonsAndCodeWizards.Core
             giver.UseItemOn(item, receiver);
 
             return $"{giverName} used {itemName} on {receiverName}.";
-
         }
 
         public string GiveCharacterItem(string[] args)
@@ -146,13 +144,26 @@ namespace DungeonsAndCodeWizards.Core
 
         public string GetStats()
         {
+            //var sortedCharacterParty = characterParty
+            //      .OrderByDescending(ch => ch.IsAlive)
+            //      .ThenByDescending(ch => ch.Health)
+            //      .ToList();
+
+            //var result = string.Join(Environment.NewLine, sortedCharacterParty);
+
+            //return result;
+            var sb = new StringBuilder();
             var sortedCharacterParty = characterParty
                   .OrderByDescending(ch => ch.IsAlive)
                   .ThenByDescending(ch => ch.Health)
                   .ToList();
 
-            var result = string.Join(Environment.NewLine, sortedCharacterParty);
-            return result;
+            foreach (var ch in sortedCharacterParty)
+            {
+                sb.AppendLine($"{ch}");
+            }
+
+            return sb.ToString().Trim();
         }
 
         public string Attack(string[] args)
@@ -183,9 +194,9 @@ namespace DungeonsAndCodeWizards.Core
 
             var sb = new StringBuilder();
 
-            sb.AppendLine($"{attackerName} attacks {receiverName} for {attacker.AbilityPoints} hit points!" +
-                $" {receiverName} has {receiver.Health}/{receiver.BaseHealth} HP and {receiver.Armor}/{receiver.BaseArmor} AP left!");
-   
+            sb.AppendLine($"{attackerName} attacks {receiverName} for {attacker.AbilityPoints} hit points! " +
+                $"{receiverName} has {receiver.Health}/{receiver.BaseHealth} HP and {receiver.Armor}/{receiver.BaseArmor} AP left!");
+
 
             if (receiver.IsAlive == false)
             {
@@ -226,7 +237,6 @@ namespace DungeonsAndCodeWizards.Core
             sb.AppendLine($"{healer.Name} heals {healingReceiver.Name} for {healer.AbilityPoints}! {healingReceiver.Name} has {healingReceiver.Health} health now!");
 
             return sb.ToString().Trim();
-
         }
 
         public string EndTurn(string[] args)
@@ -258,6 +268,5 @@ namespace DungeonsAndCodeWizards.Core
 
             return false;
         }
-
     }
 }

@@ -17,20 +17,15 @@ namespace DungeonsAndCodeWizards.Factories
                 throw new ArgumentException($"Invalid faction \"{faction}\"!");
             }
 
-            Character character;
             switch (type)
             {
                 case "Warrior":
-                    character = new Warrior(name, parsedFaction);
-                    break;
+                    return new Warrior(name, parsedFaction);
                 case "Cleric":
-                    character = new Cleric(name, parsedFaction);
-                    break;
+                    return new Cleric(name, parsedFaction);
                 default:
                     throw new ArgumentException($"Invalid character type \"{type}\"!");
             }
-
-            return character;
         }
     }
 }

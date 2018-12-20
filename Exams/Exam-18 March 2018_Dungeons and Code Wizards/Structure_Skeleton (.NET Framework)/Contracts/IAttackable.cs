@@ -1,12 +1,7 @@
-﻿using DungeonsAndCodeWizards.Models.Characters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DungeonsAndCodeWizards.Contracts
+﻿namespace DungeonsAndCodeWizards.Contracts
 {
+    using DungeonsAndCodeWizards.Models.Characters;
+
     public interface IAttackable
     {
         void Attack(Character character);

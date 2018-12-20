@@ -9,7 +9,7 @@ namespace DungeonsAndCodeWizards.Models.Bags
 {
     public abstract class Bag
     {
-        private readonly List<Item> items;
+        private List<Item> items;
 
         protected Bag(int capacity)
         {
@@ -50,7 +50,5 @@ namespace DungeonsAndCodeWizards.Models.Bags
 
             return item;
         }
-
-
     }
 }

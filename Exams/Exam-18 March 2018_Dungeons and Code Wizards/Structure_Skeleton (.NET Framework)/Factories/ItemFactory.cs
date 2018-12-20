@@ -11,23 +11,17 @@ namespace DungeonsAndCodeWizards.Factories
     {
         public Item CreateItem(string itemName)
         {
-            Item item;
             switch (itemName)
             {
                 case "ArmorRepairKit":
-                    item = new ArmorRepairKit();
-                    break;
+                    return new ArmorRepairKit();
                 case "HealthPotion":
-                    item = new HealthPotion();
-                    break;
+                    return new HealthPotion();
                 case "PoisonPotion":
-                    item = new PoisonPotion();
-                    break;
+                    return  new PoisonPotion();
                 default:
                     throw new ArgumentException($"Invalid item \"{itemName}\"!");
             }
-
-            return item;
         }
     }
 }

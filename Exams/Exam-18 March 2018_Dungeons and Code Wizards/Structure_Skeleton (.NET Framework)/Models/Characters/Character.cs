@@ -53,7 +53,6 @@ namespace DungeonsAndCodeWizards.Models.Characters
             }
         }
 
-
         public double BaseArmor { get; protected set; }
 
         public double Armor
@@ -76,7 +75,7 @@ namespace DungeonsAndCodeWizards.Models.Characters
         public virtual double RestHealMultiplier => 0.2;
 
 
-        public  virtual void TakeDamage(double hitPoints)
+        public void TakeDamage(double hitPoints)
         {
             if (!this.IsAlive)
             {
@@ -109,7 +108,7 @@ namespace DungeonsAndCodeWizards.Models.Characters
         }
 
 
-        public virtual void Rest()
+        public void Rest()
         {
             if (!this.IsAlive)
             {
@@ -119,16 +118,14 @@ namespace DungeonsAndCodeWizards.Models.Characters
             this.Health += (this.BaseHealth * this.RestHealMultiplier);
         }
 
-        public virtual void UseItem(Item item)
+        public void UseItem(Item item)
         {
             EnsureAlive();
 
             item.AffectCharacter(this);
         }
 
-       
-
-        public virtual void UseItemOn(Item item, Character character)
+        public void UseItemOn(Item item, Character character)
         {
             if (!this.IsAlive && character.IsAlive)
             {
@@ -138,9 +135,9 @@ namespace DungeonsAndCodeWizards.Models.Characters
             item.AffectCharacter(character);
         }
 
-        public virtual void GiveCharacterItem(Item item, Character character)
+        public void GiveCharacterItem(Item item, Character character)
         {
-            if (!this.IsAlive && character.IsAlive)
+            if (!this.IsAlive && !character.IsAlive)
             {
                 throw new InvalidOperationException("Must be alive to perform this action!");
             }
@@ -148,7 +145,7 @@ namespace DungeonsAndCodeWizards.Models.Characters
             character.ReceiveItem(item);
         }
 
-        public virtual void ReceiveItem(Item item)
+        public void ReceiveItem(Item item)
         {
             if (!this.IsAlive)
             {

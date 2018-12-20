@@ -9,9 +9,9 @@ namespace DungeonsAndCodeWizards.Models.Items
 {
     public class HealthPotion : Item
     {
-        private const int DefaultWeight = 5;
+        //private const int DefaultWeight = 5;
 
-        public HealthPotion() : base(DefaultWeight)
+        public HealthPotion() : base(weight: 5)
         {
         }
 

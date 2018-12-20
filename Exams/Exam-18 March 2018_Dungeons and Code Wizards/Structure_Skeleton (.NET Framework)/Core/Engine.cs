@@ -20,7 +20,6 @@ namespace DungeonsAndCodeWizards.Core
 
         public void Run()
         {
-
             while (this.isRunning)
             {
                 var input = this.ReadInput();
@@ -92,7 +91,6 @@ namespace DungeonsAndCodeWizards.Core
                 case "IsGameOver":
                     this.isRunning = this.dungeonMaster.IsGameOver();
                     break;
-
             }
         }
 
