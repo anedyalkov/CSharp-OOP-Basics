@@ -44,6 +44,24 @@
                 employees.Add(employee);
             }
 
+
+            //var topDepartment = employees.GroupBy(e => e.Department)
+            //    .Select(gr => new
+            //    {
+            //        Department = gr.Key,
+            //        AverageSalary = gr.Average(e => e.Salary),
+            //        Employees = gr.OrderByDescending(e => e.Salary)
+            //    })
+            //    .OrderByDescending(e => e.AverageSalary)
+            //    .FirstOrDefault();
+
+            //Console.WriteLine($"Highest Average Salary: {topDepartment.Department}");
+
+            //foreach (var emp in topDepartment.Employees)
+            //{
+            //    Console.WriteLine($"{emp.Name} {emp.Salary:F2} {emp.Email} {emp.Age}");
+            //}
+
             var topDepartment = employees
                 .GroupBy(e => e.Department)
                 .ToDictionary(x => x.Key, x => x.Select(e => e))

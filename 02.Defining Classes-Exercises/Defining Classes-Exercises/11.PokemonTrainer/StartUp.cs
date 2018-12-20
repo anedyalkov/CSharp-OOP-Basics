@@ -57,6 +57,37 @@
             {
                 Console.WriteLine(trainer.Name + " " + trainer.NumberOfBadges + " " + trainer.Pokemons.Count);
             }
+
+            //var tr = orderedTrainers.FirstOrDefault(t => t.Name == "Pesho");
+            //var pokemons = tr.Pokemons;
+            //var info = pokemons.GroupBy(p => p.Element).ToList()
+            //    .OrderBy(p => p.Key);
+
+            //foreach (var item in info)
+            //{
+            //    Console.WriteLine(item.Key);
+            //    foreach (var val in item.OrderBy(p => p.Name))
+            //    {
+            //        Console.WriteLine(val.Name);
+            //    }
+            //}
+
+            var firstPokemons = trainers.SelectMany(t => t.Pokemons).ToList();
+            var secondPokemons = trainers.Select(t => t.Pokemons).ToList();
+
+            foreach (var item in firstPokemons)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            foreach (var item in secondPokemons)
+            {
+                foreach (var p in item)
+                {
+                    Console.WriteLine(p.Name);
+                }
+            }
+            ;
         }
     }
 }
